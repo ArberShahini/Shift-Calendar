@@ -5,4 +5,4 @@ pip packets:
 * djangorestframework 
 * psycopg2 (postgresql driver)
 * python-decouple (for .env file)
-checking change
+* making sure everything is good
