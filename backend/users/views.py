@@ -7,6 +7,7 @@ from rest_framework.exceptions import ValidationError
 from .serializers import *
 from .services import UserService
 from .models import User
+import email_service
 
 class RegisterView(APIView):
     permission_classes = [AllowAny]
@@ -15,7 +16,8 @@ class RegisterView(APIView):
         serializer = RegisterSerializer(data=request.data)
         if serializer.is_valid():
             user, token = UserService.register(serializer.validated_data)
-            return Response({'message': 'User registered successfully', 'token': token}, status=status.HTTP_201_CREATED)
+            email_service.EmailService.send_activation_email(user, token)
+            return Response({'message': 'User registered successfully'}, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 class LoginView(APIView):
@@ -47,9 +49,10 @@ class PwdResetRequestView(APIView):
             try:
                 user = User.objects.get(email=serializer.validated_data['email'])
                 token = UserService.generate_pwd_reset_token(user)
+                email_service.EmailService.send_password_reset_email(user, token)
             except User.DoesNotExist:
                 pass
-            return Response({'message': 'If this email exists you will receive a password reset link', 'token': token}, status=status.HTTP_200_OK)
+            return Response({'message': 'If this email exists you will receive a password reset link'}, status=status.HTTP_200_OK)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 class PwdResetView(APIView):
