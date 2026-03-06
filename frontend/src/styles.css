@@ -1,0 +1,46 @@
+@import url('https://fonts.googleapis.com/css2?family=Shrikhand&family=Space+Grotesk:wght@300..700&display=swap');
+
+.shrikhand-regular {
+  font-family: "Shrikhand", serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.space-grotesk {
+  font-family: "Space Grotesk", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 200;
+  font-style: normal;
+}
+
+
+:root {
+    --color-primary: #D97757;
+    --color-primary-hover: #C4623F;
+
+    --color-background: #FFFFFF;
+    --color-surface: #F5F5F5;
+    --color-text-primary: #1A1A1A;
+    --color-text-secondary: #6B6B6B;
+    --color-border: #E0E0E0;
+}
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        --color-primary: #D97757;
+        --color-primary-hover: #E8896A;
+
+        --color-background: #1A1A1A;
+        --color-surface: #242424;
+        --color-text-primary: #F5F5F5;
+        --color-text-secondary: #A0A0A0;
+        --color-border: #333333;
+    }
+}
+
+html {
+    background-color: var(--color-background);
+    margin: 0;
+    padding: 0;
+    font-size: 16px;
+}

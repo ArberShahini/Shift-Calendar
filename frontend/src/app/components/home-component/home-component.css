@@ -1,0 +1,180 @@
+.home-page-container {
+    display: flex;
+    flex-direction: column;
+    height: 95vh;
+    margin: 0;
+}
+
+.toolbar {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    text-align: center;
+    margin: 0.5em 4em;
+    user-select: none;
+}
+
+.toolbar-left, .toolbar-right {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    align-self: stretch;
+}
+
+.toolbar-item {
+    display: flex;
+    flex-direction: row;
+    cursor: pointer;
+    align-items: center;
+}
+
+.toolbar-item:hover .toolbar-small-text {
+    text-decoration: underline;
+    text-underline-offset: 0.2em;
+}
+
+.toolbar-icon {
+    margin: 0;
+    padding: 0;
+    color: var(--color-text-primary);
+}
+
+.toolbar-big-text {
+    color: var(--color-primary);
+    margin: 0;
+    padding: 0 2em 0 0;
+}
+
+.toolbar-small-text {
+    color: var(--color-text-primary);
+    margin: 0;
+    padding: 0 1.5em 0 0.25em;
+    font-size: 1.2em;
+}
+
+.toolbar-button {
+    background-color: var(--color-primary);
+    color: var(--color-background);
+    border: 0px;
+    border-radius: 0.5em;
+    font-size: 1.2em;
+    font-weight: 400;
+    margin: 0.25em 0em 0.25em 2em;
+    padding: 0 1.25em;
+    align-self: stretch;
+    cursor: pointer;
+    transition-duration: 0.2s;
+}
+
+.toolbar-button:hover {
+    background-color: var(--color-primary-hover);
+    color: var(--color-surface);
+    text-decoration: underline;
+    text-underline-offset: 0.1em;
+    transition-duration: 0.2s;
+}
+
+.content-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin: 0em 2em;
+    border-radius: 1.5em;
+    padding: 1em;
+    background-color: var(--color-border);
+    flex: 1;
+    user-select: none;
+}
+
+.card-container {
+    display: flex;
+    flex-direction: column;   
+    margin: 0;
+    padding: 2em;
+    border-radius: 1em;
+    background-color: var(--color-surface);
+    flex: 1;
+}
+
+.auth-card {
+    flex: 1;
+    margin-left: 1em;
+}
+
+.description-card {
+    flex: 1.5;
+}
+
+.content-big-text {
+    color: var(--color-primary);
+    font-size: 3em;
+    margin: 0;
+}
+
+.content-small-text {
+    color: var(--color-text-secondary);
+    font-size: 1.75em;
+}
+
+.content-colored-text {
+    color: var(--color-primary);
+    font-weight: 600;
+    text-decoration: underline;
+    text-underline-offset: 0.1em;
+    text-align: center;
+}
+
+.features-container {
+    display: flex;
+    flex: 1;
+    justify-content: space-around;
+}
+
+.feature {
+    flex: 1;
+    background-color: var(--color-border);
+    border-top: 2em solid var(--color-primary);
+    margin: 0.5em;
+    padding: 0 1em 1em 1em;
+    border-radius: 0.5em;
+    transition: 0.2s;
+}
+
+.feature:hover {
+    transform: translateY(-0.75em);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.16);
+    transition: 0.2s;
+}
+
+.feature:hover .feature-small-text {
+    color: var(--color-text-primary);
+    transition: 0.2s;
+}
+
+.feature:hover .feature-big-text {
+    color: var(--color-primary-hover);
+    transition: 0.2s;
+}
+
+.feature-big-text {
+    color: var(--color-primary);
+    font-size: 1.8em;
+    font-weight: 600;
+    text-align: center;
+    transition: 0.2s;
+}
+
+.feature-small-text {
+    font-size: 1.5em;
+    color: var(--color-text-secondary);
+    transition: 0.2s;
+}
+
+.divider {
+    border: none;
+    height: 1px;
+    background-image: linear-gradient(to right, var(--color-text-secondary) 10px, transparent 10px);
+    background-size: 15px 1px;
+    background-repeat: repeat-x;
+}
