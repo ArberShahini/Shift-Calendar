@@ -1,30 +1,5 @@
 <div class="home-page-container">
-    <div class="toolbar">
-        <div class="toolbar-left">
-            <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@40,300,0,0"/>
-            <h1 class="toolbar-big-text shrikhand-regular">Shift Calendar</h1>
-    
-            <div class="toolbar-item">
-                <span class="material-symbols-outlined toolbar-icon">home</span>
-                <h3 class="space-grotesk toolbar-small-text">Home</h3>
-            </div>
-        
-            <div class="toolbar-item">
-                <span class="material-symbols-outlined toolbar-icon">info</span>
-                <h3 class="space-grotesk toolbar-small-text">About The Project</h3>
-            </div>
-        
-            <div class="toolbar-item">
-                <span class="material-symbols-outlined toolbar-icon">code_blocks</span>
-                <h3 class="space-grotesk toolbar-small-text">Source Code</h3>
-            </div>
-        </div>
-    
-        <div class="toolbar-right">
-            <button type="button" class="toolbar-button space-grotesk">Sign Up</button>
-            <button type="button" class="toolbar-button space-grotesk">Login</button>
-        </div>
-    </div>
+    <app-home-toolbar-component></app-home-toolbar-component>
     
     <div class="content-container">
         <div class="card-container description-card">
@@ -35,27 +10,23 @@
                 <span class="content-colored-text">Shift Calendar</span> makes it easy to keep everything organized.
             </h1>
             <div class="features-container">
-                <div class="feature">
-                    <h1 class="space-grotesk feature-big-text">View Your Hours</h1>
-                    <hr class="divider">
-                    <p class="space-grotesk feature-small-text">
-                        See a detailed weekly and monthly breakdown of your total hours worked and profits in multiple jobs profiles at a time.
-                    </p>
-                </div>
-                <div class="feature">
-                    <h1 class="space-grotesk feature-big-text">Easy Management</h1>
-                    <hr class="divider">
-                    <p class="space-grotesk feature-small-text">
-                        Easily and quickly make shift change, work hours change or paid vacation requests to your manager and check their approval status.
-                    </p>
-                </div>
-                <div class="feature">
-                    <h1 class="space-grotesk feature-big-text">Export Information</h1>
-                    <hr class="divider">
-                    <p class="space-grotesk feature-small-text">
-                        Archive and download a summary of your shifts as a PDF file. Perfect for filing taxes, or keeping a personal record of your work history.
-                    </p>
-                </div>
+                <app-home-feature-component
+                    header="View Your Hours"
+                    description="See a detailed weekly and monthly breakdown of your total hours worked and profits in multiple jobs profiles at a time."
+                    class="features-container"
+                ></app-home-feature-component>
+                
+                <app-home-feature-component
+                    header="Easy Management"
+                    description="Easily and quickly make shift change, work hours change or paid vacation requests to your manager and check their approval status."
+                    class="features-container"
+                ></app-home-feature-component>
+    
+                <app-home-feature-component
+                    header="Export Information"
+                    description="Archive and download a summary of your shifts as a PDF file. Perfect for filing taxes, or keeping a personal record of your work history."
+                    class="features-container"
+                ></app-home-feature-component>
             </div>
         </div>
         <div class="card-container auth-card">
