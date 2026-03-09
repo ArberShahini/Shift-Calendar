@@ -1,0 +1,33 @@
+.extra-container {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin: 0.75em;
+    justify-content: space-between;
+}
+
+.extra-text {
+    color: var(--color-text-secondary);
+    font-size: 1.25em;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    gap: 0.25em;
+    align-self: center;
+}
+
+.clickable-text {
+    color: var(--color-primary);
+    text-decoration: underline;
+    text-underline-offset: 0.125em;
+    cursor: pointer;
+}
+
+.divider {
+    margin: 2.5em 0;
+}
+
+.oauth-button {
+    width: 70%;
+    align-self: center;
+}

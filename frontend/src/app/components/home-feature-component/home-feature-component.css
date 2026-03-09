@@ -5,6 +5,7 @@
     margin: 0.5em;
     padding: 0 1em 1em 1em;
     border-radius: 0.5em;
+    cursor: pointer;
     transition: 0.2s;
 }
 
@@ -36,12 +37,4 @@
     font-size: 1.5em;
     color: var(--color-text-secondary);
     transition: 0.2s;
-}
-
-.divider {
-    border: none;
-    height: 1px;
-    background-image: linear-gradient(to right, var(--color-text-secondary) 10px, transparent 10px);
-    background-size: 15px 1px;
-    background-repeat: repeat-x;
 }

@@ -17,6 +17,7 @@
 :root {
     --color-primary: #D97757;
     --color-primary-hover: #C4623F;
+    --color-primary-clicked: #E8896A;
 
     --color-background: #FFFFFF;
     --color-surface: #F5F5F5;
@@ -29,6 +30,7 @@
     :root {
         --color-primary: #D97757;
         --color-primary-hover: #E8896A;
+        --color-primary-clicked: #C4623F;
 
         --color-background: #1A1A1A;
         --color-surface: #242424;
@@ -43,4 +45,139 @@ html {
     margin: 0;
     padding: 0;
     font-size: 16px;
+}
+
+.form-input {
+    font-size: 1.5em;
+    color: var(--color-text-primary);
+    background-color: var(--color-surface);
+    padding: 0.5em;
+    border-radius: 0.5em;
+    border: 0.1em solid var(--color-border);
+    transition: 0.2s;
+}
+
+.form-input:focus {
+    border: 0.1em solid var(--color-primary);
+    outline: none;
+    transition: 0.2s;
+}
+
+.form-input:focus {
+    border: 0.1em solid var(--color-primary);
+    outline: none;
+    transition: 0.2s;
+}
+
+.divider {
+    border: none;
+    height: 1px;
+    width: 100%;
+    background-image: linear-gradient(to right, var(--color-text-secondary) 10px, transparent 10px);
+    background-size: 15px 1px;
+    background-repeat: repeat-x;
+}
+
+.input-container {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 2.5em;
+}
+
+.input-container:focus-within label {
+    color: var(--color-primary);
+    transition: 0.2s;
+}
+
+input[type="checkbox"] {
+    appearance: none;
+    width: 1.5em;
+    height: 1.5em;
+    border: 0.2em solid var(--color-border);
+    background-color: var(--color-surface);
+    border-radius: 0.5em;
+    cursor: pointer;
+}
+
+input[type="checkbox"]:checked {
+    background-color: var(--color-primary-hover);
+    border-color: var(--color-primary);
+}
+
+input[type="checkbox"]:checked::after {
+    content: '✓';
+    position: relative;
+    color: white;
+    font-size: 2em;
+    font-weight: 600;
+    top: -65%;
+    left: 0%;
+}
+
+input[type="checkbox"]:focus {
+    outline: none;
+}
+
+.no-bottom-margin {
+    margin-bottom: 0;
+}
+
+.custom-button {
+    background-color: var(--color-primary);
+    color: var(--color-background);
+    border: 0px;
+    border-radius: 0.5em;
+    font-size: 1.2em;
+    font-weight: 400;
+    margin: 0.25em 0em 0.25em 0em;
+    padding: 0 1.25em;
+    align-self: stretch;
+    cursor: pointer;
+    transition-duration: 0.2s;
+}
+
+.custom-button:hover {
+    background-color: var(--color-primary-hover);
+    color: var(--color-surface);
+    text-decoration: underline;
+    text-underline-offset: 0.1em;
+    transition-duration: 0.2s;
+}
+
+.custom-button:active {
+    background-color: var(--color-primary-clicked);
+    transition: 0s;
+}
+
+.form-button {
+    font-size: 2em;
+    padding: 0.2em;
+    border-radius: 0.5em;
+}
+
+.form-big-text {
+    color: var(--color-primary);
+    font-size: 3em;
+    text-align: center;
+    margin: 0;
+}
+
+.form-small-text {
+    color: var(--color-text-secondary);
+    font-size: 1.75em;
+    padding-left: 0.25em;
+}
+
+.form-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.label-container {
+    display: flex;
+    align-items: center;
+}
+
+.label-icon {
+    font-size: 1.25em !important;
 }
