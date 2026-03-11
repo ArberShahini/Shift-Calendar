@@ -1,0 +1,130 @@
+<div class="steps-container space-grotesk">
+    <div class="step">
+        <div class="step-number" [class.step-completed]="currentStep >= 1">1</div>
+        <div class="step-label">Credentials</div>
+    </div>
+    <hr class="step-divider" [class.step-completed]="currentStep >= 2">
+
+    <div class="step">
+        <div class="step-number" [class.step-completed]="currentStep >= 2">2</div>
+        <div class="step-label">Company</div>
+    </div>
+    <hr class="step-divider" [class.step-completed]="currentStep >= 3">
+
+    <div class="step">
+        <div class="step-number" [class.step-completed]="currentStep >= 3">3</div>
+        <div class="step-label">Work Profile</div>
+    </div>
+    <hr class="step-divider" [class.step-completed]="currentStep >= 4">
+
+    <div class="step">
+        <div class="step-number" [class.step-completed]="currentStep >= 4">4</div>
+        <div class="step-label">Done!</div>
+    </div>
+</div>
+
+<hr class="divider">
+
+<form>
+    @if (currentStep == 1) {
+        <!-- ########## CREDENTIALS MODULE ##########-->
+        <div class="form-container">
+            <div class="name-input-container">
+                <div class="input-container space-grotesk">
+                    <label for="firstname" class="form-small-text label-container">
+                        <span class="material-symbols-outlined label-icon">person</span>
+                        First Name
+                    </label>
+                    <input class="form-input small-input" type="text" name="firstname" id="firstname">
+                </div>
+        
+                <div class="input-container space-grotesk" style="margin-left: auto;">
+                    <label for="lastname" class="form-small-text label-container">
+                        <span class="material-symbols-outlined label-icon">person</span>
+                        Last Name
+                    </label>
+                    <input class="form-input small-input" type="text" name="lastname" id="lastname">
+                </div>
+            </div>
+        
+            <div class="input-container space-grotesk">
+                <label for="email" class="form-small-text label-container">
+                    <span class="material-symbols-outlined label-icon">mail</span>
+                    Email
+                </label>
+                <input class="form-input" type="text" name="email" id="email">
+            </div>
+            
+            <div class="input-container space-grotesk">
+                <label for="password" class="form-small-text label-container">
+                    <span class="material-symbols-outlined label-icon">lock</span>
+                    Password
+                </label>
+                <input class="form-input" type="password" name="password" id="password">    
+            </div>
+        
+            <div class="input-container space-grotesk no-bottom-margin">
+                <label for="confirmPassword" class="form-small-text label-container">
+                    <span class="material-symbols-outlined label-icon">lock</span>
+                    Confirm Password
+                </label>
+                <input class="form-input" type="password" name="confirmPassword" id="confirmPassword">    
+            </div>
+        </div>
+    } @else if(currentStep == 2) {
+        <!-- ########## COMPANY MODULE ##########-->
+         <div class="step-content">
+             <div class="input-container no-bottom-margin space-grotesk">
+                 <label for="search" class="form-small-text label-container">
+                     <span class="material-symbols-outlined label-icon">search</span>
+                     Search
+                 </label>
+                 <input class="form-input" type="text" id="search">
+             </div>
+     
+             <div class="scrollable-flex-container firefox-scrollbar">
+                <!-- ADD SUPPORT FOR DYNAMIC LIST LATER -->
+                 <div class="company">
+                    <div class="logo-container">
+                        <img src="assets/google.svg" class="company-logo">
+                    </div>
+                 </div>
+                 <div class="company">
+                    <div class="logo-container">
+                        <img src="assets/google.svg" class="company-logo">
+                    </div>
+                 </div>
+                 <div class="company">
+                    <div class="logo-container">
+                        <img src="assets/google.svg" class="company-logo">
+                    </div>
+                 </div>
+                 <div class="company">
+                    <div class="logo-container">
+                        <img src="assets/google.svg" class="company-logo">
+                    </div>
+                 </div>
+             </div>
+
+             <label class="no-company-text space-grotesk">
+                <input type="checkbox" class="space-grotesk">
+                I don't work for any of the listed companies
+            </label>
+         </div>
+    }
+
+    <div class="button-container">
+        <button type="button" class="form-button custom-button"  (click)="prev()" [disabled]="currentStep == 1">
+            <i class="fa-solid fa-arrow-left"></i>
+            Prev
+        </button>
+        @if (currentStep <= 3) {
+            <button type="button" class="form-button custom-button" (click)="next()">
+                Next
+                <i class="fa-solid fa-arrow-right"></i>
+            </button>
+        } @else {
+            <button type="button" class="form-button custom-button">Sign Up</button>
+        }
+    </div>
+</form>

@@ -3,7 +3,7 @@
 <div class="form-container">
     <div class="input-container space-grotesk">
         <label for="email" class="form-small-text label-container">
-            <span class="material-symbols-outlined label-icon">person</span>
+            <span class="material-symbols-outlined label-icon">mail</span>
             Email
         </label>
         <input class="form-input" type="text" name="email" id="email">
@@ -30,7 +30,7 @@
 
     <button class="custom-button form-button space-grotesk">Login</button>
     <label class="extra-text space-grotesk">
-        Don't have an account? <span class="clickable-text">Sign up!</span>
+        Don't have an account? <span class="clickable-text" (click)="onSignupClick()">Sign up!</span>
     </label>
     <hr class="divider">
     <label class="extra-text space-grotesk">Or</label>

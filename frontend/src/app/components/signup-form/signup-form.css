@@ -1,0 +1,117 @@
+:host {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.steps-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+.step {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    color: var(--color-text-primary);
+}
+
+.step-number {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 2.7em;
+    height: 2.7em;
+    font-size: 2em;
+    font-weight: 700;
+    background-color: var(--color-border);
+    border: 0.1em solid var(--color-border);
+    border-radius: 50%;
+}
+
+.step-divider {
+    flex: none;
+    align-self: flex-start;
+    border: 1px solid;
+    border-color: var(--color-border);
+    margin-top: 2.8em;
+    width: 2em;
+    margin-inline-start: 0;
+    margin-inline-end: 0;
+}
+
+.step-completed {
+    border-color: var(--color-primary);
+    color: var(--border-primary);
+}
+
+.step-content {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    min-height: 0;
+}
+
+.divider {
+    margin: 1.5em 0;
+}
+
+.name-input-container {
+    display: flex;
+    justify-content: space-between;
+    overflow: hidden;
+    gap: 2em;
+}
+
+.custom-button {
+    margin-top: 0.5em;
+    padding-right: 2em;
+    padding-left: 2em;
+}
+
+.button-container {
+    display: flex;
+    justify-content: space-between;
+    flex-shrink: 0;
+}
+
+.scrollable-flex-container {
+    margin-bottom: 0.75em;
+    margin-top: 0.75em;
+    border: 0.25em solid var(--color-border);
+}
+
+.company {
+    background-color: var(--color-surface);
+    padding: 0.5em;
+    border-radius: 1em;
+    margin-bottom: 0.75em;
+}
+
+.no-company-text {
+    color: var(--color-text-secondary);
+    font-size: 1.25em;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    gap: 0.25em;
+    align-self: center;
+}
+
+.company-logo {
+    height: 5em;
+}
+
+.logo-container {
+    background-color: var(--color-background);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: fit-content;
+    height: fit-content;
+    padding: 0.5em;
+    border-radius: 1em;
+}

@@ -51,6 +51,8 @@ html {
     font-size: 1.5em;
     color: var(--color-text-primary);
     background-color: var(--color-surface);
+    box-sizing: border-box;
+    width: 100%;
     padding: 0.5em;
     border-radius: 0.5em;
     border: 0.1em solid var(--color-border);
@@ -149,6 +151,16 @@ input[type="checkbox"]:focus {
     transition: 0s;
 }
 
+.custom-button:disabled {
+    color: var(--color-text-secondary);
+    background-color: var(--color-border);
+    cursor: not-allowed;
+}
+
+.custom-button:disabled:hover {
+    text-decoration: none;
+}
+
 .form-button {
     font-size: 2em;
     padding: 0.2em;
@@ -171,6 +183,7 @@ input[type="checkbox"]:focus {
 .form-container {
     display: flex;
     flex-direction: column;
+    height: 100%;
 }
 
 .label-container {
@@ -180,4 +193,67 @@ input[type="checkbox"]:focus {
 
 .label-icon {
     font-size: 1.25em !important;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    overflow: hidden;
+}
+
+.scrollable-flex-container {
+    flex: 1;
+    overflow-y: auto;
+    min-height: 0;
+    background-color: var(--color-border);
+    border-radius: 1em;
+    box-sizing: border-box;
+    padding: 1em;
+}
+
+/* ########### CHROMIUM SCROLL BAR ########## */
+::-webkit-scrollbar {
+    width: 6px;
+}
+
+
+::-webkit-scrollbar-track {
+    background: var(--color-border);
+    border-radius: 10px;
+}
+
+
+::-webkit-scrollbar-thumb {
+    background: var(--color-primary);
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--color-primary-hover);
+}
+
+::-webkit-scrollbar-thumb:active {
+    background: var(--color-primary-clicked);
+}
+
+.scrollable-flex-container::-webkit-scrollbar-track {
+    margin-bottom: 0.75em;
+    margin-top: 0.75em;
+}
+
+/* ########## FIREFOX SCROLL BAR ########## */
+/* Firefox */
+.firefox-scrollbar {
+    scrollbar-width: auto;
+    scrollbar-color: var(--color-primary) var(--color-border);
+    padding-top: 0.75em;
+    padding-bottom: 0.75em;
+}
+
+@supports selector(::-webkit-scrollbar) {
+    .scrollable-flex-container {
+        scrollbar-color: unset;
+        scrollbar-width: unset;
+    }
 }

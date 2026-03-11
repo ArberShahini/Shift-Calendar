@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-login-form',
@@ -6,4 +6,10 @@ import { Component } from '@angular/core';
   templateUrl: './login-form.html',
   styleUrl: './login-form.css',
 })
-export class LoginForm {}
+export class LoginForm {
+  @Output() signupClicked = new EventEmitter<void>();
+
+  onSignupClick() {
+    this.signupClicked.emit();
+  }
+}

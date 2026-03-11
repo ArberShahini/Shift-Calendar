@@ -13,7 +13,9 @@
     border-radius: 1.5em;
     padding: 1em;
     background-color: var(--color-border);
-    flex: 1;
+    min-height: calc(100vh - 8.75em);
+    max-height: calc(100vh - 8.75em);
+    overflow: hidden;
     user-select: none;
 }
 
@@ -24,12 +26,15 @@
     padding: 2em;
     border-radius: 1em;
     background-color: var(--color-surface);
+    height: 100%;
+    box-sizing: border-box;
     flex: 1;
 }
 
 .auth-card {
     flex: 1;
     margin-left: 1em;
+    height: 100%;
 }
 
 .description-card {

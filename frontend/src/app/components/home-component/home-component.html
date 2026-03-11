@@ -1,5 +1,8 @@
 <div class="home-page-container">
-    <app-home-toolbar-component></app-home-toolbar-component>
+    <app-home-toolbar-component
+        (loginClicked)="toggleLogin()" 
+        (signupClicked)="toggleSignup()"
+    ></app-home-toolbar-component>
     
     <div class="content-container">
         <div class="card-container description-card">
@@ -30,7 +33,13 @@
             </div>
         </div>
         <div class="card-container auth-card">
-            <app-login-form></app-login-form>
+            @if (state == 'login') {
+                <app-login-form
+                    (signupClicked)="toggleSignup()"
+                ></app-login-form>
+            } @else if (state == 'signup'){
+                <app-signup-form></app-signup-form>
+            }
         </div>
     </div>
 </div>
