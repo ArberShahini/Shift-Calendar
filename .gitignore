@@ -1,6 +1,7 @@
 .env
 /venv/
 /backend/__pycache__
+/backend/backend/__pycache__
 
 # Compiled output
 /frontend/dist
