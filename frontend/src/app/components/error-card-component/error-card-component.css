@@ -1,0 +1,37 @@
+:host {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex: 1;
+  height: 100%;
+}
+
+.card-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.icon {
+    font-size: 3.5em;
+    color: var(--color-text-primary);
+}
+
+.icon-container {
+    background-color: var(--color-primary);
+    padding: 0.75em;
+    border-radius: 50%;
+}
+
+.error-header {
+    text-align: center;
+    color: var(--color-text-primary);
+    margin: 0;
+}
+
+.error-message {
+    text-align: center;
+    color: var(--color-text-secondary);
+    margin: 0;
+}

@@ -12,4 +12,8 @@ export class LoginForm {
   onSignupClick() {
     this.signupClicked.emit();
   }
+
+  onEnter(){
+    console.log("attempted login");
+  }
 }

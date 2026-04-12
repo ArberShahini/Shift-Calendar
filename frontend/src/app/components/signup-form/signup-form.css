@@ -32,6 +32,10 @@
     border-radius: 50%;
 }
 
+.step-icon {
+    font-size: 1.25em;
+}
+
 .step-divider {
     flex: none;
     align-self: flex-start;
@@ -53,6 +57,10 @@
     flex-direction: column;
     flex: 1;
     min-height: 0;
+}
+
+.current-step {
+    background-color: var(--color-primary);
 }
 
 .divider {
@@ -84,11 +92,27 @@
     border: 0.25em solid var(--color-border);
 }
 
-.company {
-    background-color: var(--color-surface);
+.radio-option {
+    display: flex;
+    gap: 1em;
+    align-items: center;
+    background-color: var(--color-background);
     padding: 0.5em;
     border-radius: 1em;
     margin-bottom: 0.75em;
+    box-sizing: border-box;
+    cursor: pointer;
+    transition-duration: 0.2s;
+}
+
+.radio-option:hover {
+    background-color: var(--color-surface);
+    transition-duration: 0.2s;
+}
+
+.radio-option:hover .logo-container {
+    background-color: var(--color-border);
+    transition-duration: 0.2s;
 }
 
 .no-company-text {
@@ -103,10 +127,11 @@
 
 .company-logo {
     height: 5em;
+    transition-duration: 0.2s;
 }
 
 .logo-container {
-    background-color: var(--color-background);
+    background-color: var(--color-surface);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -114,4 +139,73 @@
     height: fit-content;
     padding: 0.5em;
     border-radius: 1em;
+    transition-duration: 0.2s;
+}
+
+.radio-option-header {
+    color: var(--color-text-primary);
+    font-size: 3em;
+    margin: 0;
+    transition-duration: 0.2s;
+}
+
+.radio-option-description {
+    color: var(--color-text-secondary);
+    margin: 0;
+    font-size: 0.4em;
+}
+
+.radio-option input[type="radio"] {
+    display: none;
+}
+
+.radio-option:has(input:checked) {
+    outline: 0.175em solid var(--color-primary);
+    transition: 0.2s;
+}
+
+.step-content:has(.no-company-text input:checked) .radio-option {
+    pointer-events: none;
+    background-color: var(--color-surface);
+    color: var(--color-text-secondary);
+    transition-duration: 0.2s;
+}
+
+.step-content:has(.no-company-text input:checked) .scrollable-flex-container {
+    cursor: not-allowed;
+}
+
+.step-content:has(.no-company-text input:checked) .logo-container {
+    background-color: var(--color-border);
+    transition-duration: 0.2s;
+}
+
+.step-content:has(.no-company-text input:checked) .company-logo {
+    filter: grayscale(100%);
+    transition-duration: 0.2s;
+}
+
+.step-content:has(.no-company-text input:checked) .radio-option-header {
+    color: var(--color-text-secondary);
+    transition-duration: 0.2s;
+}
+
+.error-message {
+    display: none;
+    color: var(--color-error);
+    font-size: 0.55em;
+    margin-left: 0.5em;
+}
+
+.span-extension {
+    font-size: 1em;
+    margin: 0;
+}
+
+.show-error {
+    display: inherit;
+}
+
+.label-container {
+    align-items: center;
 }

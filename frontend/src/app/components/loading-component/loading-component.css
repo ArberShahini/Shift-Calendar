@@ -1,0 +1,87 @@
+/* //codelessly loader style */
+.ui-loader {
+  display: inline-block;
+  width: 75px;
+  height: 75px;
+}
+
+.loader-blk {
+  color: var(--color-primary);
+  animation: rotate-outer08 1.4s linear infinite;
+}
+
+.multiColor-loader {
+  display: block;
+  animation: color-anim08 1.4s infinite;
+}
+
+.loader-circle {
+  stroke: currentColor;
+}
+
+.MuiCircularProgress-circleStatic {
+  transition: stroke-dashoffset 0.3s cubic-bezier(0.4, 0, 0.2, 1) 0s;
+}
+
+.loader-circle-animation {
+  animation: rotate-inner08 1.4s ease-in-out
+    infinite;
+  stroke-dasharray: 80px, 200px;
+  stroke-dashoffset: 0;
+}
+
+@keyframes rotate-outer08 {
+  0% {
+    transform-origin: 50% 50%;
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes rotate-inner08 {
+  0% {
+    stroke-dasharray: 1px, 200px;
+    stroke-dashoffset: 0;
+  }
+
+  50% {
+    stroke-dasharray: 100px, 200px;
+    stroke-dashoffset: -15px;
+  }
+
+  100% {
+    stroke-dasharray: 100px, 200px;
+    stroke-dashoffset: -125px;
+  }
+}
+
+@keyframes color-anim08 {
+  0% {
+    color: var(--color-primary);
+  }
+
+  25% {
+    color: var(--color-primary-hover);
+  }
+
+  50% {
+    color: var(--color-primary);
+  }
+
+  75% {
+    color: var(--color-primary-hover);
+  }
+}
+
+.loader-text-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.loader-text {
+    margin: 0;
+    padding: 0;
+}

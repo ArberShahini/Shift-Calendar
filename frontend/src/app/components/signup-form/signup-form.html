@@ -1,76 +1,109 @@
 <div class="steps-container space-grotesk">
     <div class="step">
-        <div class="step-number" [class.step-completed]="currentStep >= 1">1</div>
+        <div class="step-number" [class.step-completed]="currentStep >= 1" [class.current-step]="currentStep == 1">
+            <span class="material-symbols-outlined step-icon">
+                lock
+            </span>
+        </div>
         <div class="step-label">Credentials</div>
     </div>
     <hr class="step-divider" [class.step-completed]="currentStep >= 2">
 
     <div class="step">
-        <div class="step-number" [class.step-completed]="currentStep >= 2">2</div>
+        <div class="step-number" [class.step-completed]="currentStep >= 2" [class.current-step]="currentStep == 2">
+            <span class="material-symbols-outlined step-icon">
+                apartment
+            </span>
+        </div>
         <div class="step-label">Company</div>
     </div>
     <hr class="step-divider" [class.step-completed]="currentStep >= 3">
 
     <div class="step">
-        <div class="step-number" [class.step-completed]="currentStep >= 3">3</div>
+        <div class="step-number" [class.step-completed]="currentStep >= 3" [class.current-step]="currentStep == 3">
+            <span class="material-symbols-outlined step-icon">
+                business_center
+            </span>
+        </div>
         <div class="step-label">Work Profile</div>
     </div>
     <hr class="step-divider" [class.step-completed]="currentStep >= 4">
 
     <div class="step">
-        <div class="step-number" [class.step-completed]="currentStep >= 4">4</div>
+        <div class="step-number" [class.step-completed]="currentStep >= 4" [class.current-step]="currentStep == 4">
+            <span class="material-symbols-outlined step-icon">
+                check_circle
+            </span>
+        </div>
         <div class="step-label">Done!</div>
     </div>
 </div>
 
 <hr class="divider">
 
-<form>
+<div class="form-wrapper">
     @if (currentStep == 1) {
         <!-- ########## CREDENTIALS MODULE ##########-->
-        <div class="form-container">
+        <form class="form-container" #credentialsForm="ngForm" id="credentialsform" passwordMatch passwordValidator>
             <div class="name-input-container">
                 <div class="input-container space-grotesk">
                     <label for="firstname" class="form-small-text label-container">
                         <span class="material-symbols-outlined label-icon">person</span>
                         First Name
+                        <span class="error-message" [class.show-error]="firstNameField.errors?.['required'] && firstNameField.touched">- required</span>
                     </label>
-                    <input class="form-input small-input" type="text" name="firstname" id="firstname">
+                    <input class="form-input small-input" type="text" name="firstname" id="firstname" [(ngModel)]="firstName" #firstNameField="ngModel" required>
                 </div>
         
                 <div class="input-container space-grotesk" style="margin-left: auto;">
                     <label for="lastname" class="form-small-text label-container">
                         <span class="material-symbols-outlined label-icon">person</span>
                         Last Name
+                        <span class="error-message" [class.show-error]="lastNameField.errors?.['required'] && lastNameField.touched">- required</span>
                     </label>
-                    <input class="form-input small-input" type="text" name="lastname" id="lastname">
+                    <input class="form-input small-input" type="text" name="lastname" id="lastname" [(ngModel)]="lastName" #lastNameField="ngModel" required>
                 </div>
             </div>
-        
+            
             <div class="input-container space-grotesk">
                 <label for="email" class="form-small-text label-container">
                     <span class="material-symbols-outlined label-icon">mail</span>
                     Email
+                    <span class="error-message" [class.show-error]="emailField.errors?.['required'] && emailField.touched">- required</span>
+                    <span class="error-message" [class.show-error]="emailField.errors?.['email'] && emailField.touched">- invalid email</span>
                 </label>
-                <input class="form-input" type="text" name="email" id="email">
+                <input class="form-input" type="text" name="email" id="email" 
+                [(ngModel)]="email" #emailField="ngModel" required email>
             </div>
             
             <div class="input-container space-grotesk">
                 <label for="password" class="form-small-text label-container">
                     <span class="material-symbols-outlined label-icon">lock</span>
                     Password
+                    <span class="error-message" [class.show-error]="passwordField.errors?.['required'] && passwordField.touched">- required</span>
+                    <span class="error-message" [class.show-error]="credentialsForm.errors?.['passwordValidator'] && passwordField.touched">
+                        - password requires
+                        <span class="error-message span-extension" [class.show-error]="credentialsForm.errors?.['passwordValidator']?.['minLength']">&nbsp;8 characters,</span>
+                        <span class="error-message span-extension" [class.show-error]="credentialsForm.errors?.['passwordValidator']?.['missingUppercase']">&nbsp;1 uppercase character,</span>
+                        <span class="error-message span-extension" [class.show-error]="credentialsForm.errors?.['passwordValidator']?.['missingDigit']">&nbsp;1 digit</span>
+                    </span>
                 </label>
-                <input class="form-input" type="password" name="password" id="password">    
+                <input class="form-input" type="password" name="password" id="password" [(ngModel)]="password" #passwordField="ngModel" required>    
             </div>
-        
+            
             <div class="input-container space-grotesk no-bottom-margin">
                 <label for="confirmPassword" class="form-small-text label-container">
                     <span class="material-symbols-outlined label-icon">lock</span>
                     Confirm Password
+                    <span class="error-message" [class.show-error]="confirmPasswordField.errors?.['required'] && confirmPasswordField.touched">- required</span>
+                    <span class="error-message" 
+                    [class.show-error]="credentialsForm.errors?.['passwordMatch'] && confirmPasswordField.touched && confirmPasswordField.value">
+                        - passwords don't match
+                    </span>
                 </label>
-                <input class="form-input" type="password" name="confirmPassword" id="confirmPassword">    
+                <input class="form-input" type="password" name="confirmPassword" id="confirmPassword" [(ngModel)]="confirmPassword" #confirmPasswordField="ngModel" required>    
             </div>
-        </div>
+        </form>
     } @else if(currentStep == 2) {
         <!-- ########## COMPANY MODULE ##########-->
          <div class="step-content">
@@ -79,52 +112,121 @@
                      <span class="material-symbols-outlined label-icon">search</span>
                      Search
                  </label>
-                 <input class="form-input" type="text" id="search">
+                 <input class="form-input" type="text" id="search" [(ngModel)]="companiesSearchTerm" (ngModelChange)="onCompaniesSearch($event)">
              </div>
      
              <div class="scrollable-flex-container firefox-scrollbar">
-                <!-- ADD SUPPORT FOR DYNAMIC LIST LATER -->
-                 <div class="company">
-                    <div class="logo-container">
-                        <img src="assets/google.svg" class="company-logo">
+                @if (isLoading) {
+                    <div class="loader-container">
+                        <app-loading-component></app-loading-component>
                     </div>
-                 </div>
-                 <div class="company">
-                    <div class="logo-container">
-                        <img src="assets/google.svg" class="company-logo">
-                    </div>
-                 </div>
-                 <div class="company">
-                    <div class="logo-container">
-                        <img src="assets/google.svg" class="company-logo">
-                    </div>
-                 </div>
-                 <div class="company">
-                    <div class="logo-container">
-                        <img src="assets/google.svg" class="company-logo">
-                    </div>
-                 </div>
+                } @else {
+                    @for (company of filteredCompanies; track company.id) {
+                        <label class="radio-option" (click)="onCompanyClick(company.id)">
+                           <input type="radio" name="company-selection"
+                               [checked]="selectedCompany === company.id"
+                               (click)="$event.stopPropagation()"
+                           >
+                           <div class="logo-container">
+                               <img [src]="fetchLogoUrl(company.logo)" class="company-logo">
+                           </div>
+                           <h1 class="radio-option-header space-grotesk">
+                               {{company.name}}
+                               <p class="radio-option-description space-grotesk">Location: {{company.country_code}}</p>
+                           </h1>
+                        </label>
+                    }
+                    @if (companyFetchHasError) {
+                        <app-error-card-component 
+                            [header]="'Unable to connect'"
+                            [message]="'The server is not responding. Please try again later'"    
+                        ></app-error-card-component>
+                    } @else if (noCompanies && companiesSearchTerm !== '') {
+                        <app-error-card-component 
+                            [header]="'No matches found'"
+                            [message]="'No registered companies were found with the current search term'"    
+                        ></app-error-card-component>
+                    } @else if (noCompanies) {
+                        <app-error-card-component 
+                            [header]="'No companies found'"
+                            [message]="'No registered companies were found'"    
+                        ></app-error-card-component>
+                    }
+                }
              </div>
 
              <label class="no-company-text space-grotesk">
-                <input type="checkbox" class="space-grotesk">
+                <input type="checkbox" class="space-grotesk" (change)="onNoCompanyChange($event)">
                 I don't work for any of the listed companies
             </label>
          </div>
+    } @else if(currentStep == 3) {
+        <!-- ########## WORK PROFILE MODULE ##########-->
+        <div class="step-content">
+             <div class="input-container no-bottom-margin space-grotesk">
+                 <label for="search" class="form-small-text label-container">
+                     <span class="material-symbols-outlined label-icon">search</span>
+                     Search
+                 </label>
+                 <input class="form-input" type="text" id="search" [(ngModel)]="workProfilesSearchTerm" (ngModelChange)="onWorkProfilesSearch($event)">
+             </div>
+     
+             <div class="scrollable-flex-container firefox-scrollbar">
+                @if(isLoading){
+                    <div class="loader-container">
+                        <app-loading-component></app-loading-component>
+                    </div>
+                } @else {
+                    @for (work_profile of filteredWorkProfiles; track work_profile.id) {
+                        <label class="radio-option" (click)="onWorkProfileClick(work_profile.id)">
+                            <input type="radio" name="work-profile-selection"
+                                [checked]="selectedWorkProfile === work_profile.id"
+                                (click)="$event.stopPropagation()"
+                            >
+                            <h1 class="radio-option-header space-grotesk">
+                                {{work_profile.job_title}}
+                                <p class="radio-option-description space-grotesk">
+                                    Work Hours: {{parseHours(work_profile.start_time)}} - {{addHours(work_profile.start_time, work_profile.daily_hours)}}
+                                </p>
+                            </h1>
+                        </label>
+                    }
+                    @if (workProfileFetchHasError) {
+                        <app-error-card-component
+                            [header]="'Unable to connect'"
+                            [message]="'The server is not responding. Please try again later'"
+                        ></app-error-card-component>
+                    } @else if (noWorkProfiles && workProfilesSearchTerm !== '') {
+                        <app-error-card-component
+                            [header]="'No matches found'"
+                            [message]="'No registered work profiles were found with the current search term for [' + companies.find(c => c.id === selectedCompany)?.name + ']'"
+                        ></app-error-card-component>
+                    } @else if (noWorkProfiles) {
+                        <app-error-card-component
+                            [header]="'No work profiles found'"
+                            [message]="'No registered work profiles were found for [' + companies.find(c => c.id === selectedCompany)?.name + ']'"
+                        ></app-error-card-component>
+                    }
+                }
+             </div>
+        </div>
     }
 
     <div class="button-container">
-        <button type="button" class="form-button custom-button"  (click)="prev()" [disabled]="currentStep == 1">
+        <button type="button" class="form-button custom-button"  (click)="changeStep('prev')" [disabled]="currentStep == 1 || isLoading">
             <i class="fa-solid fa-arrow-left"></i>
             Prev
         </button>
-        @if (currentStep <= 3) {
-            <button type="button" class="form-button custom-button" (click)="next()">
+        @if (currentStep <= 2) {
+            <button type="button" class="form-button custom-button" (click)="changeStep('next')" 
+            [attr.form]="'credentialsform'"
+            [disabled]='isLoading || isCredentialsInvalid()'
+            >
                 Next
                 <i class="fa-solid fa-arrow-right"></i>
             </button>
         } @else {
-            <button type="button" class="form-button custom-button">Sign Up</button>
+            <button type="button" class="form-button custom-button" [disabled]="isLoading">Sign Up</button>
         }
     </div>
-</form>
+</div>

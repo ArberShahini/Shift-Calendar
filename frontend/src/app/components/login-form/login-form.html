@@ -1,6 +1,6 @@
 <h1 class="form-big-text shrikhand-regular">Login</h1>
 
-<div class="form-container">
+<div class="form-container" (keydown.enter)="onEnter()">
     <div class="input-container space-grotesk">
         <label for="email" class="form-small-text label-container">
             <span class="material-symbols-outlined label-icon">mail</span>
@@ -28,7 +28,7 @@
         </label>
     </div>
 
-    <button class="custom-button form-button space-grotesk">Login</button>
+    <button class="custom-button form-button space-grotesk" (click)="onEnter()">Login</button>
     <label class="extra-text space-grotesk">
         Don't have an account? <span class="clickable-text" (click)="onSignupClick()">Sign up!</span>
     </label>
