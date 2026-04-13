@@ -22,6 +22,7 @@ export class SignupForm {
 
   currentStep: number = 1;
   isLoading: boolean = false;
+  isNoCompanyChecked: boolean = false;
 
   companies: Company[] = [];
   companiesSearchTerm: string = '';
@@ -51,6 +52,18 @@ export class SignupForm {
     return this.credentialsForm ? this.credentialsForm.invalid ?? true : true;
   }
 
+  passwordErrorMessage(): string {
+    const errors = this.credentialsForm?.errors?.['passwordValidator'];
+    if (!errors) return '';
+
+    const messages = [];
+    if (errors['minLength']) messages.push('8 characters');
+    if (errors['missingUppercase']) messages.push('1 uppercase character');
+    if (errors['missingDigit']) messages.push('1 digit');
+
+    return '- password requires ' + messages.join(', ');
+  }
+
   changeStep(direction: string) {
     if ((this.currentStep == 1 && direction === 'next') || (this.currentStep == 3 && direction === 'prev')) {
       this.loadCompanies();
@@ -75,10 +88,12 @@ export class SignupForm {
   }
 
   onNoCompanyChange(event: Event) {
-    const checked = (event.target as HTMLInputElement).checked;
-    if (checked) {
-        this.selectedCompany = 0;
-      }
+    this.isNoCompanyChecked = (event.target as HTMLInputElement).checked;
+    if (this.isNoCompanyChecked) {
+      this.selectedCompany = -1;
+    } else {
+      this.selectedCompany = 0;
+    }
   }
   
   loadCompanies() {
@@ -155,9 +170,7 @@ export class SignupForm {
     );
 
     this.noWorkProfiles = this.filteredWorkProfiles.length === 0;
-    console.log("Length: " + this.filteredWorkProfiles.length)
-    console.log(this.filteredWorkProfiles)
-
+    this.selectedWorkProfile = 0;
     this.cdr.detectChanges();
   }
 
@@ -168,7 +181,11 @@ export class SignupForm {
     );
 
     this.noCompanies = this.filteredCompanies.length === 0;
-
+    if(this.isNoCompanyChecked) {
+      this.selectedCompany = -1;
+    } else {
+      this.selectedCompany = 0;
+    }
     this.cdr.detectChanges();
   }
 }

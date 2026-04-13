@@ -18,7 +18,8 @@ class RegisterView(APIView):
             user, token = UserService.register(serializer.validated_data)
             email_service.EmailService.send_activation_email(user, token)
             return Response({'message': 'User registered successfully'}, status=status.HTTP_201_CREATED)
-        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+        first_error = next(iter(serializer.errors.values()))[0]
+        return Response({'error': first_error}, status=status.HTTP_400_BAD_REQUEST)
 
 class LoginView(APIView):
     permission_classes = [AllowAny]

@@ -192,14 +192,10 @@
 
 .error-message {
     display: none;
+    white-space: wrap;
     color: var(--color-error);
-    font-size: 0.55em;
+    font-size: 0.5em;
     margin-left: 0.5em;
-}
-
-.span-extension {
-    font-size: 1em;
-    margin: 0;
 }
 
 .show-error {

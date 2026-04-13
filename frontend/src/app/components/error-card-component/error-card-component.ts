@@ -7,6 +7,7 @@ import { Component, input, Input } from '@angular/core';
   styleUrl: './error-card-component.css',
 })
 export class ErrorCardComponent {
+  @Input() icon: string = ''
   @Input() header: string = ''
   @Input() message: string = ''
 }

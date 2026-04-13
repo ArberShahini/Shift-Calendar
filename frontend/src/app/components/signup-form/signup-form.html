@@ -52,7 +52,7 @@
                         First Name
                         <span class="error-message" [class.show-error]="firstNameField.errors?.['required'] && firstNameField.touched">- required</span>
                     </label>
-                    <input class="form-input small-input" type="text" name="firstname" id="firstname" [(ngModel)]="firstName" #firstNameField="ngModel" required>
+                    <input class="form-input small-input space-grotesk" type="text" name="firstname" id="firstname" [(ngModel)]="firstName" #firstNameField="ngModel" required>
                 </div>
         
                 <div class="input-container space-grotesk" style="margin-left: auto;">
@@ -61,7 +61,7 @@
                         Last Name
                         <span class="error-message" [class.show-error]="lastNameField.errors?.['required'] && lastNameField.touched">- required</span>
                     </label>
-                    <input class="form-input small-input" type="text" name="lastname" id="lastname" [(ngModel)]="lastName" #lastNameField="ngModel" required>
+                    <input class="form-input small-input space-grotesk" type="text" name="lastname" id="lastname" [(ngModel)]="lastName" #lastNameField="ngModel" required>
                 </div>
             </div>
             
@@ -72,7 +72,7 @@
                     <span class="error-message" [class.show-error]="emailField.errors?.['required'] && emailField.touched">- required</span>
                     <span class="error-message" [class.show-error]="emailField.errors?.['email'] && emailField.touched">- invalid email</span>
                 </label>
-                <input class="form-input" type="text" name="email" id="email" 
+                <input class="form-input space-grotesk" type="text" name="email" id="email" 
                 [(ngModel)]="email" #emailField="ngModel" required email>
             </div>
             
@@ -82,13 +82,10 @@
                     Password
                     <span class="error-message" [class.show-error]="passwordField.errors?.['required'] && passwordField.touched">- required</span>
                     <span class="error-message" [class.show-error]="credentialsForm.errors?.['passwordValidator'] && passwordField.touched">
-                        - password requires
-                        <span class="error-message span-extension" [class.show-error]="credentialsForm.errors?.['passwordValidator']?.['minLength']">&nbsp;8 characters,</span>
-                        <span class="error-message span-extension" [class.show-error]="credentialsForm.errors?.['passwordValidator']?.['missingUppercase']">&nbsp;1 uppercase character,</span>
-                        <span class="error-message span-extension" [class.show-error]="credentialsForm.errors?.['passwordValidator']?.['missingDigit']">&nbsp;1 digit</span>
+                        {{passwordErrorMessage()}}
                     </span>
                 </label>
-                <input class="form-input" type="password" name="password" id="password" [(ngModel)]="password" #passwordField="ngModel" required>    
+                <input class="form-input space-grotesk" type="password" name="password" id="password" [(ngModel)]="password" #passwordField="ngModel" required>    
             </div>
             
             <div class="input-container space-grotesk no-bottom-margin">
@@ -101,7 +98,7 @@
                         - passwords don't match
                     </span>
                 </label>
-                <input class="form-input" type="password" name="confirmPassword" id="confirmPassword" [(ngModel)]="confirmPassword" #confirmPasswordField="ngModel" required>    
+                <input class="form-input space-grotesk" type="password" name="confirmPassword" id="confirmPassword" [(ngModel)]="confirmPassword" #confirmPasswordField="ngModel" required>    
             </div>
         </form>
     } @else if(currentStep == 2) {
@@ -112,7 +109,7 @@
                      <span class="material-symbols-outlined label-icon">search</span>
                      Search
                  </label>
-                 <input class="form-input" type="text" id="search" [(ngModel)]="companiesSearchTerm" (ngModelChange)="onCompaniesSearch($event)">
+                 <input class="form-input space-grotesk" type="text" id="search" [(ngModel)]="companiesSearchTerm" (ngModelChange)="onCompaniesSearch($event)">
              </div>
      
              <div class="scrollable-flex-container firefox-scrollbar">
@@ -138,40 +135,43 @@
                     }
                     @if (companyFetchHasError) {
                         <app-error-card-component 
+                            [icon]="'warning'"
                             [header]="'Unable to connect'"
                             [message]="'The server is not responding. Please try again later'"    
                         ></app-error-card-component>
                     } @else if (noCompanies && companiesSearchTerm !== '') {
                         <app-error-card-component 
+                            [icon]="'warning'"
                             [header]="'No matches found'"
                             [message]="'No registered companies were found with the current search term'"    
                         ></app-error-card-component>
                     } @else if (noCompanies) {
                         <app-error-card-component 
+                            [icon]="'warning'"
                             [header]="'No companies found'"
                             [message]="'No registered companies were found'"    
                         ></app-error-card-component>
                     }
                 }
-             </div>
-
-             <label class="no-company-text space-grotesk">
-                <input type="checkbox" class="space-grotesk" (change)="onNoCompanyChange($event)">
+            </div>
+                
+            <label class="no-company-text space-grotesk">
+                <input type="checkbox" class="space-grotesk" (change)="onNoCompanyChange($event)" [checked]="isNoCompanyChecked">
                 I don't work for any of the listed companies
             </label>
-         </div>
+        </div>
     } @else if(currentStep == 3) {
         <!-- ########## WORK PROFILE MODULE ##########-->
         <div class="step-content">
-             <div class="input-container no-bottom-margin space-grotesk">
-                 <label for="search" class="form-small-text label-container">
-                     <span class="material-symbols-outlined label-icon">search</span>
-                     Search
-                 </label>
-                 <input class="form-input" type="text" id="search" [(ngModel)]="workProfilesSearchTerm" (ngModelChange)="onWorkProfilesSearch($event)">
-             </div>
+            <div class="input-container no-bottom-margin space-grotesk">
+                <label for="search" class="form-small-text label-container">
+                    <span class="material-symbols-outlined label-icon">search</span>
+                    Search
+                </label>
+                 <input class="form-input space-grotesk" type="text" id="search" [(ngModel)]="workProfilesSearchTerm" (ngModelChange)="onWorkProfilesSearch($event)">
+                </div>
      
-             <div class="scrollable-flex-container firefox-scrollbar">
+                <div class="scrollable-flex-container firefox-scrollbar">
                 @if(isLoading){
                     <div class="loader-container">
                         <app-loading-component></app-loading-component>
@@ -180,8 +180,8 @@
                     @for (work_profile of filteredWorkProfiles; track work_profile.id) {
                         <label class="radio-option" (click)="onWorkProfileClick(work_profile.id)">
                             <input type="radio" name="work-profile-selection"
-                                [checked]="selectedWorkProfile === work_profile.id"
-                                (click)="$event.stopPropagation()"
+                            [checked]="selectedWorkProfile === work_profile.id"
+                            (click)="$event.stopPropagation()"
                             >
                             <h1 class="radio-option-header space-grotesk">
                                 {{work_profile.job_title}}
@@ -193,18 +193,27 @@
                     }
                     @if (workProfileFetchHasError) {
                         <app-error-card-component
+                            [icon]="'warning'"
                             [header]="'Unable to connect'"
                             [message]="'The server is not responding. Please try again later'"
-                        ></app-error-card-component>
-                    } @else if (noWorkProfiles && workProfilesSearchTerm !== '') {
-                        <app-error-card-component
+                            ></app-error-card-component>
+                        } @else if (noWorkProfiles && workProfilesSearchTerm !== '') {
+                            <app-error-card-component
+                            [icon]="'warning'"
                             [header]="'No matches found'"
                             [message]="'No registered work profiles were found with the current search term for [' + companies.find(c => c.id === selectedCompany)?.name + ']'"
-                        ></app-error-card-component>
-                    } @else if (noWorkProfiles) {
-                        <app-error-card-component
+                            ></app-error-card-component>
+                        } @else if (noWorkProfiles) {
+                            <app-error-card-component
+                            [icon]="'warning'"
                             [header]="'No work profiles found'"
                             [message]="'No registered work profiles were found for [' + companies.find(c => c.id === selectedCompany)?.name + ']'"
+                            ></app-error-card-component>
+                        } @else if (isNoCompanyChecked) {
+                            <app-error-card-component
+                            [icon]="'info'"
+                            [header]="'No company selected'"
+                            [message]="'No work profiles are available when no company is selected, you can continue to register an account without a work profile'"
                         ></app-error-card-component>
                     }
                 }
@@ -217,10 +226,18 @@
             <i class="fa-solid fa-arrow-left"></i>
             Prev
         </button>
-        @if (currentStep <= 2) {
+        @if (currentStep == 1) {
             <button type="button" class="form-button custom-button" (click)="changeStep('next')" 
             [attr.form]="'credentialsform'"
             [disabled]='isLoading || isCredentialsInvalid()'
+            >
+                Next
+                <i class="fa-solid fa-arrow-right"></i>
+            </button>
+        } @else if (currentStep == 2){
+            <button type="button" class="form-button custom-button" (click)="changeStep('next')" 
+            [attr.form]="'credentialsform'"
+            [disabled]='isLoading || selectedCompany === 0'
             >
                 Next
                 <i class="fa-solid fa-arrow-right"></i>
